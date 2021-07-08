@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "dineshsakare/postpython"
+    registry = "dineshsakare/pythonsample"
     registryCredential = 'dineshsakare'
     dockerImage = ''
   }
@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/DineshSakare/PythonPostgres.git'
+        git 'https://github.com/DineshSakare/python_sample.git'
       }
     }
     stage('Building image') {
