@@ -1,31 +1,20 @@
 pipeline {
-  environment {
-    registry = "dineshsakare/pythonsample"
-    registryCredential = 'dineshsakare'
-    dockerImage = ''
-  }
   agent any
   stages {
-    stage('Cloning Git') {
+    stage('Build') {
       steps {
-        git 'https://github.com/DineshSakare/python_sample.git'
+       echo 'building the application"
       }
     }
-    stage('Building image') {
+    stage('Test') {
       steps{
-        script {
-          dockerImage = docker.build registry 
-        }
+        echo 'testing the app'
       }
     }
-    stage('Deploy Image') {
+    stage('Deploy') {
       steps{
-        script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push()
+       echo 'deploying the app'
           }
-        }
-      }
     }
-  }
+ }
 }
